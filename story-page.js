@@ -19,7 +19,6 @@
   if(leaderboardWindow && !leaderboardWindow.hasAttribute('tabindex')){
     leaderboardWindow.setAttribute('tabindex','-1');
   }
-  let leaderboardLoaded = false;
   let leaderboardLoading = false;
   let leaderboardPrevFocus = null;
 
@@ -101,7 +100,13 @@
       body: JSON.stringify({ solverId, name })
     });
     const ok = (await res.json()).ok;
-    if(ok){ claimStatus.className='status ok'; claimStatus.textContent='Name recorded.'; }
+    if(ok){
+      claimStatus.className='status ok';
+      claimStatus.textContent='Name recorded.';
+      if(leaderboardModal && !leaderboardModal.hidden && !leaderboardLoading){
+        openLeaderboard();
+      }
+    }
     else{ claimStatus.className='status no'; claimStatus.textContent='Failed to record.'; }
   });
 
@@ -116,7 +121,7 @@
     }
     leaderboardList?.setAttribute('hidden', '');
     leaderboardWindow?.focus({ preventScroll:true });
-    if(!leaderboardLoaded && !leaderboardLoading){
+    if(!leaderboardLoading){
       leaderboardLoading = true;
       try{
         const res = await fetch(`/api/leaderboard/${slug}`);
@@ -147,12 +152,11 @@
             const name = (item?.name || '—');
             const rank = item?.rank ?? '';
             const timeText = fmtTime(item?.claimedAt);
-            const timeHtml = timeText ? `<small class="leaderboard-time">${timeText}</small>` : '';
-            return `<li><strong>#${rank}</strong><span>${name}${timeHtml ? ' ' + timeHtml : ''}</span></li>`;
+            const timeHtml = timeText ? `<span class="leaderboard-time">${timeText}</span>` : '';
+            return `<li><strong>#${rank}</strong><span class="leaderboard-name">${name}</span>${timeHtml}</li>`;
           }).join('');
           leaderboardList.removeAttribute('hidden');
         }
-        leaderboardLoaded = true;
       }catch(err){
         console.error(err);
         if(leaderboardStatus){
