@@ -52,16 +52,36 @@
 
   <section id="stories" class="section archives">
     <h2 class="section-title">Stories</h2>
-    <ul class="teaser-list">
-      <li class="teaser">
-        <div class="teaser-head">
-          <span class="badge">PLAY</span>
-          <a class="entry-title link" href="/stories/the-inn-that-never-sleeps/">The Inn That Never Sleeps</a>
-        </div>
-        <div class="teaser-meta"><span class="slug">Seven clues. One story. One truth.</span></div>
-      </li>
-      <!-- 继续追加新故事时，复制此块 -->
-    </ul>
+    <p class="section-text faint">Follow the Night Archive drops. Each series releases sequential episodes.</p>
+    <div class="stories-grid" role="list">
+      <article class="story-card" role="listitem">
+        <header class="story-card__top">
+          <span class="story-card__series">Night Archive · Series I</span>
+          <span class="story-card__status">LIVE</span>
+        </header>
+        <h3 class="story-card__title">
+          <a class="story-card__link" href="/stories/the-inn-that-never-sleeps/">The Inn That Never Sleeps</a>
+        </h3>
+        <p class="story-card__logline">Seven clues. One story. One truth.</p>
+        <footer class="story-card__meta">
+          <span class="story-card__episode">Episode 01</span>
+          <span class="story-card__dot" aria-hidden="true">•</span>
+          <span class="story-card__length">7 clues · 1 verdict</span>
+        </footer>
+        <a class="story-card__cta" href="/stories/the-inn-that-never-sleeps/">Play story</a>
+      </article>
+
+      <article class="story-card story-card--upcoming" role="listitem" aria-label="Upcoming story">
+        <header class="story-card__top">
+          <span class="story-card__series">Night Archive · Series I</span>
+          <span class="story-card__status">SOON</span>
+        </header>
+        <h3 class="story-card__title">Episode 02</h3>
+        <p class="story-card__logline">Unlocks when the next truth is ready. Stay tuned.</p>
+        <footer class="story-card__meta"><span>Coming soon</span></footer>
+      </article>
+      <!-- Add future episodes by duplicating the story-card block -->
+    </div>
   </section>
 
   <section id="notice" class="section notice">
