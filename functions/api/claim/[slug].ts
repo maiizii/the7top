@@ -14,8 +14,11 @@ export const onRequestPost: PagesFunction<{ KV: KVNamespace }> = async (ctx) => 
 
   const clean = name.trim().slice(0,40);
   const nameRaw = await env.KV.get<string>(namesKey);
-  const map = (nameRaw ? JSON.parse(nameRaw) : {}) as Record<string,string>;
-  map[solverId] = clean;
+  const map = (nameRaw ? JSON.parse(nameRaw) : {}) as Record<string, unknown>;
+
+  const claimedAt = new Date().toISOString();
+  map[solverId] = { name: clean, claimedAt };
+
   await env.KV.put(namesKey, JSON.stringify(map));
 
   return new Response(JSON.stringify({ ok:true }), { headers:{'content-type':'application/json'} });
