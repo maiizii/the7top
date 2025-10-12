@@ -10,6 +10,19 @@
   const claimName = document.getElementById('claim-name');
   const claimStatus = document.getElementById('claim-status');
 
+  const btnLeaderboard = document.getElementById('btn-leaderboard');
+  const leaderboardModal = document.getElementById('leaderboard-modal');
+  const leaderboardClose = document.getElementById('leaderboard-close');
+  const leaderboardStatus = document.getElementById('leaderboard-status');
+  const leaderboardList = document.getElementById('leaderboard-list');
+  const leaderboardWindow = leaderboardModal?.querySelector('.leaderboard-modal__window');
+  if(leaderboardWindow && !leaderboardWindow.hasAttribute('tabindex')){
+    leaderboardWindow.setAttribute('tabindex','-1');
+  }
+  let leaderboardLoaded = false;
+  let leaderboardLoading = false;
+  let leaderboardPrevFocus = null;
+
   const clientFP = (() => {
     try{
       const key = 'the7.fp';
@@ -90,5 +103,83 @@
     const ok = (await res.json()).ok;
     if(ok){ claimStatus.className='status ok'; claimStatus.textContent='Name recorded.'; }
     else{ claimStatus.className='status no'; claimStatus.textContent='Failed to record.'; }
+  });
+
+  const openLeaderboard = async () => {
+    if(!leaderboardModal) return;
+    leaderboardPrevFocus = document.activeElement;
+    leaderboardModal.hidden = false;
+    document.body.classList.add('modal-open');
+    if(leaderboardStatus){
+      leaderboardStatus.textContent = 'Loading…';
+      leaderboardStatus.hidden = false;
+    }
+    leaderboardList?.setAttribute('hidden', '');
+    leaderboardWindow?.focus({ preventScroll:true });
+    if(!leaderboardLoaded && !leaderboardLoading){
+      leaderboardLoading = true;
+      try{
+        const res = await fetch(`/api/leaderboard/${slug}`);
+        if(!res.ok) throw new Error(`Failed to load leaderboard: ${res.status}`);
+        const data = await res.json();
+        const list = Array.isArray(data?.data) ? data.data : [];
+        if(list.length === 0){
+          if(leaderboardStatus){
+            leaderboardStatus.textContent = 'No verified solvers yet.';
+            leaderboardStatus.hidden = false;
+          }
+          if(leaderboardList){
+            leaderboardList.innerHTML = '';
+            leaderboardList.setAttribute('hidden', '');
+          }
+        }else if(leaderboardList){
+          if(leaderboardStatus){
+            leaderboardStatus.textContent = '';
+            leaderboardStatus.hidden = true;
+          }
+          leaderboardList.innerHTML = list.map((item)=>{
+            const name = (item?.name || '—');
+            const rank = item?.rank ?? '';
+            return `<li><strong>#${rank}</strong><span>${name}</span></li>`;
+          }).join('');
+          leaderboardList.removeAttribute('hidden');
+        }
+        leaderboardLoaded = true;
+      }catch(err){
+        console.error(err);
+        if(leaderboardStatus){
+          leaderboardStatus.textContent = 'Unable to load leaderboard. Try again later.';
+          leaderboardStatus.hidden = false;
+        }
+        if(leaderboardList){
+          leaderboardList.innerHTML = '';
+          leaderboardList.setAttribute('hidden', '');
+        }
+      }finally{
+        leaderboardLoading = false;
+      }
+    }
+  };
+
+  const closeLeaderboard = () => {
+    if(!leaderboardModal || leaderboardModal.hidden) return;
+    leaderboardModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    if(leaderboardPrevFocus && typeof leaderboardPrevFocus.focus === 'function'){
+      leaderboardPrevFocus.focus();
+    }
+  };
+
+  btnLeaderboard?.addEventListener('click', openLeaderboard);
+  leaderboardClose?.addEventListener('click', closeLeaderboard);
+  leaderboardModal?.addEventListener('click', (event)=>{
+    if(event.target === leaderboardModal){
+      closeLeaderboard();
+    }
+  });
+  document.addEventListener('keydown', (event)=>{
+    if(event.key === 'Escape'){
+      closeLeaderboard();
+    }
   });
 })();
