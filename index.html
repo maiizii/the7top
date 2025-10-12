@@ -53,35 +53,51 @@
   <section id="stories" class="section archives">
     <h2 class="section-title">Stories</h2>
     <p class="section-text faint">Follow the Night Archive drops. Each series releases sequential episodes.</p>
-    <div class="stories-grid" role="list">
-      <article class="story-card" role="listitem">
-        <header class="story-card__top">
-          <span class="story-card__series">Night Archive · Series I</span>
-          <span class="story-card__status">LIVE</span>
-        </header>
-        <h3 class="story-card__title">
-          <a class="story-card__link" href="/stories/the-inn-that-never-sleeps/">The Inn That Never Sleeps</a>
-        </h3>
-        <p class="story-card__logline">Seven clues. One story. One truth.</p>
-        <footer class="story-card__meta">
-          <span class="story-card__episode">Episode 01</span>
-          <span class="story-card__dot" aria-hidden="true">•</span>
-          <span class="story-card__length">7 clues · 1 verdict</span>
-        </footer>
-        <a class="story-card__cta" href="/stories/the-inn-that-never-sleeps/">Play story</a>
-      </article>
+    <ol class="stories-list" role="list">
+      <li class="stories-list__item">
+        <article class="story-card" role="listitem">
+          <div class="story-card__badge" aria-hidden="true">
+            <span class="story-card__badge-num">01</span>
+            <span class="story-card__badge-label">Live</span>
+          </div>
+          <div class="story-card__body">
+            <header class="story-card__top">
+              <span class="story-card__series">Night Archive · Series I</span>
+              <span class="story-card__status">LIVE</span>
+            </header>
+            <h3 class="story-card__title">
+              <a class="story-card__link" href="/stories/the-inn-that-never-sleeps/">The Inn That Never Sleeps</a>
+            </h3>
+            <p class="story-card__logline">Seven clues. One story. One truth.</p>
+            <footer class="story-card__meta">
+              <span class="story-card__episode">Episode 01</span>
+              <span class="story-card__dot" aria-hidden="true">•</span>
+              <span class="story-card__length">7 clues · 1 verdict</span>
+            </footer>
+            <a class="story-card__cta" href="/stories/the-inn-that-never-sleeps/">Enter story</a>
+          </div>
+        </article>
+      </li>
 
-      <article class="story-card story-card--upcoming" role="listitem" aria-label="Upcoming story">
-        <header class="story-card__top">
-          <span class="story-card__series">Night Archive · Series I</span>
-          <span class="story-card__status">SOON</span>
-        </header>
-        <h3 class="story-card__title">Episode 02</h3>
-        <p class="story-card__logline">Unlocks when the next truth is ready. Stay tuned.</p>
-        <footer class="story-card__meta"><span>Coming soon</span></footer>
-      </article>
+      <li class="stories-list__item">
+        <article class="story-card story-card--upcoming" role="listitem" aria-label="Upcoming story">
+          <div class="story-card__badge" aria-hidden="true">
+            <span class="story-card__badge-num">02</span>
+            <span class="story-card__badge-label">Soon</span>
+          </div>
+          <div class="story-card__body">
+            <header class="story-card__top">
+              <span class="story-card__series">Night Archive · Series I</span>
+              <span class="story-card__status">SOON</span>
+            </header>
+            <h3 class="story-card__title">Episode 02</h3>
+            <p class="story-card__logline">Unlocks when the next truth is ready. Stay tuned.</p>
+            <footer class="story-card__meta"><span>Coming soon</span></footer>
+          </div>
+        </article>
+      </li>
       <!-- Add future episodes by duplicating the story-card block -->
-    </div>
+    </ol>
   </section>
 
   <section id="notice" class="section notice">
@@ -91,7 +107,7 @@
   </section>
 
   <footer class="footer">
-    <small>THE7.TOP ©2025 · All works are fictional. Contact: archive@the7.top</small>
+    <small>Seven clues. One story. One truth. When you find it… verify it.</small>
   </footer>
 
   <script src="./main.js"></script>
