@@ -137,10 +137,18 @@
             leaderboardStatus.textContent = '';
             leaderboardStatus.hidden = true;
           }
+          const fmtTime = (iso)=>{
+            if(!iso) return '';
+            const date = new Date(iso);
+            if(Number.isNaN(date.getTime())) return '';
+            return date.toLocaleString(undefined, { hour12:false });
+          };
           leaderboardList.innerHTML = list.map((item)=>{
             const name = (item?.name || '—');
             const rank = item?.rank ?? '';
-            return `<li><strong>#${rank}</strong><span>${name}</span></li>`;
+            const timeText = fmtTime(item?.claimedAt);
+            const timeHtml = timeText ? `<small class="leaderboard-time">${timeText}</small>` : '';
+            return `<li><strong>#${rank}</strong><span>${name}${timeHtml ? ' ' + timeHtml : ''}</span></li>`;
           }).join('');
           leaderboardList.removeAttribute('hidden');
         }
