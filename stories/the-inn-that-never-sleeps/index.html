@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-slug="the-inn-that-never-sleeps">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Inn That Never Sleeps — THE 7TH GAME</title>
+  <meta name="description" content="Seven clues. One story. One truth. Verify quietly." />
+  <link rel="icon" href="https://img.811777.xyz/i/2025/10/11/68e93aac364e1.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="scanline-layer" aria-hidden="true"></div>
+
+  <main class="section">
+    <a href="/" class="nav-link" style="border-color:rgba(4,242,231,.25)">← Back</a>
+    <h1 class="section-title">The Inn That Never Sleeps</h1>
+    <p class="section-text">Seven clues. One story. One truth.</p>
+
+    <section class="story-block"><h3 class="story-h3">Opening</h3>
+      <p class="section-text">The Inn That Never Sleeps. Welcome to The Seventh Game. Tonight’s story unfolds in a quiet mountain inn; your goal—leave safely before sunrise.</p>
+    </section>
+
+    <ol class="clues">
+      <li><h4>Clue One — The Trapped Guest</h4><p>I checked into a strange inn; no one leaves until an impossible bill is paid. Some guests whisper the rules to survive the night.</p></li>
+      <li><h4>Clue Two — The Feast</h4><p>The kitchen smells of wealth and smoke; bread, stew, and a grilled sausage among silver plates. The chef once cooked for nobles.</p></li>
+      <li><h4>Clue Three — The Study Door</h4><p>Each night at ten, the study locks and lights die; no one enters after, but if you’re inside before, you can open it from within.</p></li>
+      <li><h4>Clue Four — The Hound</h4><p>A chained dog guards the garden gate; it snarls at every sound, but toss it a hot sausage, and silence becomes your ally.</p></li>
+      <li><h4>Clue Five — The Innkeeper’s Watch</h4><p>He sleeps at ten by a watch that runs five minutes fast. When he believes it’s the hour, the house grows quiet—move then.</p></li>
+      <li><h4>Clue Six — The Spare Key</h4><p>The study’s folding ladder is hollow and dangerous; climb with care. A small box rests near the rafters, holding what can unlock escape.</p></li>
+      <li><h4>Clue Seven — The Lantern</h4><p>At nine thirty the rooms go dark, but readers stay in the study. Borrow a lantern and a book—a reason to stay when lights fade.</p></li>
+    </ol>
+
+    <section class="story-block"><h3 class="story-h3">Ending</h3>
+      <p class="section-text">Think carefully about how to leave this place. Seven clues. One story. One truth.</p>
+    </section>
+
+    <section class="verify">
+      <h2 class="section-title">Verify Your Truth</h2>
+      <form class="verify-form" action="javascript:void(0)" autocomplete="off" spellcheck="false">
+        <textarea id="answer" class="input" rows="3" placeholder="Write one sentence that states the single truth."></textarea>
+        <div class="actions">
+          <button id="btn-verify" class="btn" type="submit">VERIFY</button>
+          <button id="btn-clear" class="btn ghost" type="button">CLEAR</button>
+        </div>
+        <output id="status" class="status" role="status" aria-live="polite"></output>
+      </form>
+      <form class="claim-form" action="javascript:void(0)" hidden>
+        <input id="claim-name" class="input" placeholder="Your name (optional, 40 chars)" maxlength="40" />
+        <div class="actions"><button id="btn-claim" class="btn" type="submit">CLAIM</button></div>
+        <output id="claim-status" class="status" role="status"></output>
+      </form>
+      <p class="section-text faint hint">Verification returns only correctness and rank. No solution revealed.</p>
+    </section>
+  </main>
+
+  <footer class="footer"><small>THE7.TOP ©2025</small></footer>
+  <script src="/story-page.js"></script>
+</body>
+</html>
