@@ -146,7 +146,7 @@
             if(!iso) return '';
             const date = new Date(iso);
             if(Number.isNaN(date.getTime())) return '';
-            return date.toLocaleString(undefined, { hour12:false });
+            return date.toLocaleString('en-US', { hour12:false, timeZone:'America/New_York' });
           };
           leaderboardList.innerHTML = list.map((item)=>{
             const name = (item?.name || '—');

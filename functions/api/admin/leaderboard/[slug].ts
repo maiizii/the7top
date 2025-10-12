@@ -1,4 +1,5 @@
 import { AdminAuthError, requireAdminKey } from "../../../_lib/admin";
+import { toNewYorkISOString } from "../../../_lib/time";
 
 type Env = {
   KV: KVNamespace;
@@ -65,7 +66,7 @@ const sanitizeEntries = (payload: PutBody["entries"]) => {
       if (Number.isNaN(parsed.getTime())) {
         throw new Response(`Invalid claimedAt: ${claimedRaw}`, { status: 400 });
       }
-      claimedAt = parsed.toISOString();
+      claimedAt = toNewYorkISOString(parsed);
     }
     sanitized.push({ solverId, name, claimedAt });
   }

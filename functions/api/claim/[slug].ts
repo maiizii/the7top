@@ -1,3 +1,5 @@
+import { toNewYorkISOString } from "../../_lib/time";
+
 export const onRequestPost: PagesFunction<{ KV: KVNamespace }> = async (ctx) => {
   const { request, params, env } = ctx;
   const { slug } = params as { slug:string };
@@ -16,7 +18,7 @@ export const onRequestPost: PagesFunction<{ KV: KVNamespace }> = async (ctx) => 
   const nameRaw = await env.KV.get<string>(namesKey);
   const map = (nameRaw ? JSON.parse(nameRaw) : {}) as Record<string, unknown>;
 
-  const claimedAt = new Date().toISOString();
+  const claimedAt = toNewYorkISOString();
   map[solverId] = { name: clean, claimedAt };
 
   await env.KV.put(namesKey, JSON.stringify(map));

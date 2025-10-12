@@ -18,6 +18,41 @@ let currentSlug = '';
 let dirty = false;
 let loading = false;
 
+const toNewYorkISOString = (value) => {
+  const date = value instanceof Date ? new Date(value.getTime()) : new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZoneName: 'longOffset'
+  });
+  const parts = formatter.formatToParts(date);
+  const values = {};
+  for (const part of parts) {
+    if (part.type !== 'literal') {
+      values[part.type] = part.value;
+    }
+  }
+  const label = values.timeZoneName || 'GMT-00:00';
+  const match = label.match(/GMT([+-])(\d{1,2})(?::?(\d{2}))?/i);
+  const sign = match ? match[1] : '+';
+  const hours = match ? match[2].padStart(2, '0') : '00';
+  const minutes = match ? (match[3] || '00').padStart(2, '0') : '00';
+  const { year, month, day, hour, minute, second } = values;
+  if (!year || !month || !day || !hour || !minute || !second) {
+    return null;
+  }
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}${sign}${hours}:${minutes}`;
+};
+
 const setLoginStatus = (message, tone = '') => {
   if (!loginStatus) return;
   loginStatus.textContent = message || '';
@@ -142,11 +177,11 @@ const saveChanges = async () => {
     const timeRaw = item.claimedAt ? item.claimedAt.trim() : '';
     let claimedAt = null;
     if (timeRaw) {
-      const parsed = new Date(timeRaw);
-      if (Number.isNaN(parsed.getTime())) {
+      const formatted = toNewYorkISOString(timeRaw);
+      if (!formatted) {
         throw new Error(`Invalid time: ${timeRaw}`);
       }
-      claimedAt = parsed.toISOString();
+      claimedAt = formatted;
     }
     return { solverId, name, claimedAt };
   });
