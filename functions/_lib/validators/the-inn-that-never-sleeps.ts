@@ -13,7 +13,7 @@ export function validateInn(answerRaw: string): ValidationResult {
 
   const KEY = ['key','spare key'];
   const DOG = ['hound','dog'];
-  const LEAVE = ['leave','escape','get out','go out','exit','open gate','unlock gate','garden gate','gate'];
+  const LEAVE = ['leave','escape','get out','go out','exit','open gate','unlock gate','garden gate','gate','door'];
 
   const TOTAL = 6;
   const sequences: Array<'dogThenLeave' | 'leaveThenDog'> = ['dogThenLeave', 'leaveThenDog'];
