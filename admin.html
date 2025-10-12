@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THE 7TH GAME — Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="https://img.811777.xyz/i/2025/10/11/68e93aac364e1.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Admin Console</h1>
+      <p class="admin-subtitle">Manage story leaderboards. Changes apply immediately.</p>
+    </header>
+
+    <section id="login-panel" class="admin-panel">
+      <h2>Authenticate</h2>
+      <form id="login-form" class="admin-form" autocomplete="off">
+        <label class="admin-label" for="admin-password">Password</label>
+        <input id="admin-password" class="admin-input" type="password" required placeholder="Enter admin password" />
+        <div class="admin-actions">
+          <button id="login-submit" class="admin-btn" type="submit">Unlock</button>
+        </div>
+        <p id="login-status" class="admin-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="dashboard" class="admin-panel" hidden>
+      <div class="admin-toolbar">
+        <div class="admin-field">
+          <label class="admin-label" for="story-select">Story</label>
+          <select id="story-select" class="admin-input"></select>
+        </div>
+        <div class="admin-buttons">
+          <button id="refresh-btn" class="admin-btn ghost" type="button">Reload</button>
+          <button id="add-entry" class="admin-btn ghost" type="button">Add Entry</button>
+          <button id="save-btn" class="admin-btn" type="button" disabled>Save Changes</button>
+        </div>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Solver ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Claimed At (ISO)</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entries-body"></tbody>
+        </table>
+        <p id="table-status" class="admin-status" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <template id="entry-row">
+    <tr>
+      <td class="col-rank"></td>
+      <td class="col-id"></td>
+      <td><input class="admin-input row-name" type="text" maxlength="80" placeholder="—" /></td>
+      <td><input class="admin-input row-time" type="text" placeholder="YYYY-MM-DDTHH:MM:SSZ" /></td>
+      <td class="row-actions">
+        <button type="button" class="admin-icon-btn" data-action="up" title="Move up">↑</button>
+        <button type="button" class="admin-icon-btn" data-action="down" title="Move down">↓</button>
+        <button type="button" class="admin-icon-btn danger" data-action="delete" title="Delete">✕</button>
+      </td>
+    </tr>
+  </template>
+
+  <script src="/admin.js" type="module"></script>
+</body>
+</html>
