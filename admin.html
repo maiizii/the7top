@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body class="admin-body">
+  <div data-include="site-header"></div>
   <main class="admin-main">
     <header class="admin-header">
       <h1>Admin Console</h1>
@@ -58,6 +59,8 @@
     </section>
   </main>
 
+  <div data-include="site-footer"></div>
+
   <template id="entry-row">
     <tr>
       <td class="col-rank"></td>
@@ -72,6 +75,7 @@
     </tr>
   </template>
 
+  <script src="/partials.js" defer></script>
   <script src="/admin.js" type="module"></script>
 </body>
 </html>

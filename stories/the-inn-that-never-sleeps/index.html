@@ -12,14 +12,7 @@
   <div class="noise-layer" aria-hidden="true"></div>
   <div class="scanline-layer" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <nav class="nav">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/#how" class="nav-link">How</a>
-      <a href="/#stories" class="nav-link">Stories</a>
-      <a href="/#notice" class="nav-link">Notice</a>
-    </nav>
-  </header>
+  <div data-include="site-header"></div>
 
   <main class="section page-main">
     <a href="/" class="story-back">← Back to archive</a>
@@ -64,7 +57,7 @@
     </section>
   </main>
 
-  <footer class="footer"><small>THE7.TOP ©2025 · All works are fictional. Contact: archive@the7.top</small></footer>
+  <div data-include="site-footer"></div>
   <div class="leaderboard-modal" id="leaderboard-modal" hidden>
     <div class="leaderboard-modal__window" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title">
       <header class="leaderboard-modal__header">
@@ -80,6 +73,7 @@
       </footer>
     </div>
   </div>
+  <script src="/partials.js" defer></script>
   <script src="/story-page.js"></script>
 </body>
 </html>
