@@ -48,7 +48,7 @@
               <th scope="col">Rank</th>
               <th scope="col">Solver ID</th>
               <th scope="col">Name</th>
-              <th scope="col">Claimed At (ISO)</th>
+              <th scope="col">Claimed At (America/New_York)</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -66,7 +66,10 @@
       <td class="col-rank"></td>
       <td class="col-id"></td>
       <td><input class="admin-input row-name" type="text" maxlength="80" placeholder="—" /></td>
-      <td><input class="admin-input row-time" type="text" placeholder="YYYY-MM-DDTHH:MM:SSZ" /></td>
+      <td>
+        <input class="admin-input row-time" type="text" placeholder="YYYY-MM-DDTHH:MM:SSZ" />
+        <span class="row-time-display"></span>
+      </td>
       <td class="row-actions">
         <button type="button" class="admin-icon-btn" data-action="up" title="Move up">↑</button>
         <button type="button" class="admin-icon-btn" data-action="down" title="Move down">↓</button>
