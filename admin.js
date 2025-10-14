@@ -18,6 +18,14 @@ let currentSlug = '';
 let dirty = false;
 let loading = false;
 
+const formatNY = (value) => {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const formatted = date.toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false });
+  return `${formatted} (America/New_York)`;
+};
+
 const toNewYorkISOString = (value) => {
   const date = value instanceof Date ? new Date(value.getTime()) : new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -117,6 +125,8 @@ const renderEntries = () => {
     if (idCell) idCell.textContent = solverId;
     if (nameInput) nameInput.value = name || '';
     if (timeInput) timeInput.value = claimedAt || '';
+    const timeDisplay = row.querySelector('.row-time-display');
+    if (timeDisplay) timeDisplay.textContent = formatNY(claimedAt);
     fragment.appendChild(row);
   });
   tbody.appendChild(fragment);
@@ -315,6 +325,8 @@ tbody?.addEventListener('input', (event) => {
     entries[index].name = target.value;
   } else if (target.classList.contains('row-time')) {
     entries[index].claimedAt = target.value;
+    const display = row.querySelector('.row-time-display');
+    if (display) display.textContent = formatNY(target.value);
   }
   markDirty(true);
 });
