@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-slug="where-is-the-gold">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Where is the Gold? — THE 7TH GAME</title>
+  <meta name="description" content="Seven clues. One story. One truth. Verify quietly." />
+  <link rel="icon" href="https://img.811777.xyz/i/2025/10/11/68e93aac364e1.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="scanline-layer" aria-hidden="true"></div>
+
+  <div data-include="site-header"></div>
+
+  <main class="section page-main">
+    <a href="/" class="story-back">← Back to stories</a>
+    <h1 class="section-title">Where is the Gold?</h1>
+    <p class="section-text">Seven clues. One story. One truth.</p>
+
+    <section class="story-block"><h3 class="story-h3">Opening</h3>
+      <p class="section-text">Welcome to The Seventh Game. At the Chemical Company, several gold cups are gone.</p>
+    </section>
+
+    <ol class="clues">
+      <li><h4>Clue One — The Empty Sweep</h4><p>The inspector's search found nothing. The lab was spotless.</p></li>
+      <li><h4>Clue Two — Cleared Badges</h4><p>Staff confirmed only authorized personnel were present.</p></li>
+      <li><h4>Clue Three — Final Departure</h4><p>The very last person to leave the laboratory was Professor Harvey.</p></li>
+      <li><h4>Clue Four — Metal Gate</h4><p>A metal detector guards the exit. Solid gold cannot pass through.</p></li>
+      <li><h4>Clue Five — Quiet Logs</h4><p>The security logs were normal. No alarms were triggered at all.</p></li>
+      <li><h4>Clue Six — Vanished Trace</h4><p>The inspector was stumped. The gold vanished without a trace.</p></li>
+      <li><h4>Clue Seven — Corrosive Shelf</h4><p>On a shelf, his eyes found a single bottle. The label read: Aqua Regia.</p></li>
+    </ol>
+
+    <section class="story-block"><h3 class="story-h3">Ending</h3>
+      <p class="section-text">Inspector Rollin knew the answer. Can you? Verify your answer at the7top web.</p>
+    </section>
+
+    <section class="verify">
+      <h2 class="section-title">Verify Your Truth</h2>
+      <form class="verify-form" action="javascript:void(0)" autocomplete="off" spellcheck="false">
+        <textarea id="answer" class="input" rows="3" placeholder="Write one sentence that states the single truth."></textarea>
+        <div class="actions">
+          <button id="btn-verify" class="btn" type="submit">VERIFY</button>
+          <button id="btn-clear" class="btn ghost" type="button">CLEAR</button>
+        </div>
+        <output id="status" class="status" role="status" aria-live="polite"></output>
+      </form>
+      <form class="claim-form" action="javascript:void(0)" hidden>
+        <input id="claim-name" class="input" placeholder="Your name (optional, 40 chars)" maxlength="40" />
+        <div class="actions"><button id="btn-claim" class="btn" type="submit">CLAIM</button></div>
+        <output id="claim-status" class="status" role="status"></output>
+      </form>
+      <p class="section-text faint hint">Correct solvers may share the hall of fame. <button id="btn-leaderboard" class="link-btn" type="button">View leaderboard</button></p>
+      <p class="section-text faint hint">Verification checks only the required elements and time, in the exact order. No solution revealed.</p>
+    </section>
+  </main>
+
+  <div data-include="site-footer"></div>
+  <div class="leaderboard-modal" id="leaderboard-modal" hidden>
+    <div class="leaderboard-modal__window" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title">
+      <header class="leaderboard-modal__header">
+        <h2 id="leaderboard-title">Hall of Solvers</h2>
+        <button id="leaderboard-close" class="leaderboard-close" type="button" aria-label="Close leaderboard">✕</button>
+      </header>
+      <div class="leaderboard-modal__body">
+        <p id="leaderboard-status" class="leaderboard-status">Loading…</p>
+        <ol id="leaderboard-list" class="leaderboard-list" hidden></ol>
+      </div>
+      <footer class="leaderboard-modal__footer">
+        <small>All verified escapees, updated in real time. (America/New_York)</small>
+      </footer>
+    </div>
+  </div>
+  <script src="/partials.js" defer></script>
+  <script src="/story-page.js"></script>
+</body>
+</html>
