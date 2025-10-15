@@ -200,7 +200,7 @@ body{margin:0;font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 @media (max-width:640px){
   .stories-list__item{padding-left:0}
   .stories-list__item::before{display:none}
-  .story-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"badge cta" "badge title" "badge logline" "badge meta";gap:18px;padding:24px}
+  .story-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"badge cta" "title title" "logline logline" "meta meta";gap:18px;padding:24px}
   .story-card__badge{grid-area:badge;align-self:flex-start;flex-direction:row;align-items:center;gap:10px;letter-spacing:.18em;padding:12px 16px}
   .story-card__badge-num{font-size:24px}
   .story-card__body{display:contents}
