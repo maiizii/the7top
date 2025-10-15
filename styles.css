@@ -200,11 +200,15 @@ body{margin:0;font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 @media (max-width:640px){
   .stories-list__item{padding-left:0}
   .stories-list__item::before{display:none}
-  .story-card{flex-direction:column;gap:22px;padding:24px}
-  .story-card__status{flex-direction:row;justify-content:space-between;align-items:center;padding:14px 18px;min-width:0;gap:14px}
-  .story-card__status::before,.story-card__status::after{left:0;right:0}
-  .story-card__badge{flex:1;letter-spacing:.22em;padding:12px 16px}
-  .story-card__badge--index{width:auto;font-size:26px}
-  .story-card__topline{justify-content:flex-start}
+  .story-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"badge cta" "badge title" "badge logline" "badge meta";gap:18px;padding:24px}
+  .story-card__badge{grid-area:badge;align-self:flex-start;flex-direction:row;align-items:center;gap:10px;letter-spacing:.18em;padding:12px 16px}
+  .story-card__badge-num{font-size:24px}
+  .story-card__body{display:contents}
+  .story-card__top{grid-area:title;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .story-card__status{display:none}
+  .story-card__logline{grid-area:logline;margin:0}
+  .story-card__meta{grid-area:meta}
+  .story-card__cta{grid-area:cta;justify-self:end;align-self:flex-start}
+  .story-card__badge--index{width:auto;font-size:24px}
 }
 @media (prefers-reduced-motion: reduce){.noise-layer,.scanline-layer{display:none}.logo,.cursor{animation:none}.glitch::before,.glitch::after{display:none}}
