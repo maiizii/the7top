@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-slug="the-unknown-kidnapper">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Unknown Kidnapper — THE 7TH GAME</title>
+  <meta name="description" content="Seven clues. One story. One truth. Verify quietly." />
+  <link rel="icon" href="https://img.811777.xyz/i/2025/10/11/68e93aac364e1.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="scanline-layer" aria-hidden="true"></div>
+
+  <div data-include="site-header"></div>
+
+  <main class="section page-main">
+    <a href="https://the7.top/#stories" class="story-back">← Back to stories</a>
+    <h1 class="section-title">The Unknown Kidnapper</h1>
+    <p class="section-text">Seven clues. One story. One truth.</p>
+
+    <section class="story-block"><h3 class="story-h3">Opening</h3>
+      <p class="section-text">Welcome to The Seventh Game. A tycoon&rsquo;s son is kidnapped. The ransom demand is strange.</p>
+    </section>
+
+    <ol class="clues">
+      <li><h4>Clue One — The Ransom Demand</h4><p>The ransom—one million dollars, paid entirely in old, used bills.</p></li>
+      <li><h4>Clue Two — Postal Instructions</h4><p>The money must be sent via the postal service inside a plain, ordinary wrapper.</p></li>
+      <li><h4>Clue Three — A Curious Wrapper</h4><p>The wrapper must come from the tycoon&rsquo;s own office supply.</p></li>
+      <li><h4>Clue Four — Address Check</h4><p>Investigators confirm only one part of the address is real—the city.</p></li>
+      <li><h4>Clue Five — False Details</h4><p>The rest of the address is fake. The street name and recipient do not exist.</p></li>
+      <li><h4>Clue Six — Impossible Delivery</h4><p>How can the kidnapper collect a package mailed to a completely fake address?</p></li>
+      <li><h4>Clue Seven — Postal Rule</h4><p>By rule, any undeliverable package is simply returned to the sender.</p></li>
+    </ol>
+
+    <section class="story-block"><h3 class="story-h3">Ending</h3>
+      <p class="section-text">The detective knew the kidnapper&rsquo;s identity. Do you? Verify at the7top web.</p>
+    </section>
+
+    <section class="verify">
+      <h2 class="section-title">Verify Your Truth</h2>
+      <form class="verify-form" action="javascript:void(0)" autocomplete="off" spellcheck="false">
+        <textarea id="answer" class="input" rows="3" placeholder="Write one sentence that states the single truth."></textarea>
+        <div class="actions">
+          <button id="btn-verify" class="btn" type="submit">VERIFY</button>
+          <button id="btn-clear" class="btn ghost" type="button">CLEAR</button>
+        </div>
+        <output id="status" class="status" role="status" aria-live="polite"></output>
+      </form>
+      <form class="claim-form" action="javascript:void(0)" hidden>
+        <input id="claim-name" class="input" placeholder="Your name (optional, 40 chars)" maxlength="40" />
+        <div class="actions"><button id="btn-claim" class="btn" type="submit">CLAIM</button></div>
+        <output id="claim-status" class="status" role="status"></output>
+      </form>
+      <p class="section-text faint hint">Correct solvers may share the hall of fame. <button id="btn-leaderboard" class="link-btn" type="button">View leaderboard</button></p>
+      <p class="section-text faint hint">Verification checks only the required elements and time, in the exact order. No solution revealed.</p>
+    </section>
+  </main>
+
+  <div data-include="site-footer"></div>
+  <div class="leaderboard-modal" id="leaderboard-modal" hidden>
+    <div class="leaderboard-modal__window" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title">
+      <header class="leaderboard-modal__header">
+        <h2 id="leaderboard-title">Hall of Solvers</h2>
+        <button id="leaderboard-close" class="leaderboard-close" type="button" aria-label="Close leaderboard">✕</button>
+      </header>
+      <div class="leaderboard-modal__body">
+        <p id="leaderboard-status" class="leaderboard-status">Loading…</p>
+        <ol id="leaderboard-list" class="leaderboard-list" hidden></ol>
+      </div>
+      <footer class="leaderboard-modal__footer">
+        <small>All verified escapees, updated in real time. (America/New_York)</small>
+      </footer>
+    </div>
+  </div>
+  <script src="/partials.js" defer></script>
+  <script src="/story-page.js"></script>
+</body>
+</html>
