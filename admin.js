@@ -23,7 +23,7 @@ const formatNY = (value) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return '';
   const formatted = date.toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false });
-  return `${formatted} (America/New_York)`;
+  return formatted;
 };
 
 const toNewYorkISOString = (value) => {
